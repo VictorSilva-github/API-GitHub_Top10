@@ -4,6 +4,7 @@ const router = express.Router();
 const sequelize = require('../models/db')
 const GetTop10 = require("../models/terms/query")
 
+
 const Termos = require('../models/terms/Terms')
 
 router.get('/profile/:name', async (req, res) => {
@@ -28,7 +29,7 @@ router.post("/search-terms", async (req, res) => {
             })
         }).catch((error) => {
             return res.status(400).json({
-                error: true, 
+                error: true,
                 mensagem: error
             })
         })
@@ -36,7 +37,7 @@ router.post("/search-terms", async (req, res) => {
 
 router.get('/top-terms', async (req, res) => {
 
-    await sequelize.query(GetTop10)
+    await sequelize.query(GetTop10, {type: sequelize.QueryTypes.SELECT})
         .then((top) => {
             return res.json({
                 error: false,
@@ -45,11 +46,27 @@ router.get('/top-terms', async (req, res) => {
             })
         }).catch((error) => {
             return res.status(400).json({
-                error: true, 
+                error: true,
                 mensagem: error
             })
         })
 
+})
+
+router.delete('/terms-all-delete', async (req, res) => {
+
+      await sequelize.query("DELETE FROM terms WHERE id > 0")
+      .then(() => {
+          return res.json({
+              error: false,
+              mensagem: "lista deletada"
+          })
+      }).catch((error) => {
+          return res.status(400).json({
+              error: true,
+              mensagem: error
+          })
+      })
 
 })
 

@@ -7,7 +7,7 @@
 
 .container-app {
   width: 100vw;
-  height: 100vh;
+  height: 150vh;
   background-color: #525561;
   display: flex;
   align-items: center;
@@ -21,10 +21,12 @@
   border-radius: 2rem;
 }
 
+
+
 .container-app .container {
   padding: 2rem;
   width: 80%;
-  height: 90%; 
+  height: 90%;
 }
 
 .container-app .container .header-top {
@@ -85,8 +87,8 @@
 }
 
 .container-app .container main .content div {
-  width: 600px;
-  height: 500px;
+  width: 500px;
+  height: 600px;
   background-color: #191622;
   border-radius: 2rem;
   padding: 1rem;
@@ -115,4 +117,13 @@
   font-size: 20px;
   font-weight: 500;
   margin-top: 1rem;
+}
+
+.topWrapper {
+  width: 90%;
+  max-height: 160px;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  border: 1px solid white;
 }
